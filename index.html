@@ -1,61 +1,61 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
   <title>Quiz4IAS</title>
   <style>
     body { font-family: Arial; background:#f4f4f4; padding:20px; }
     .box { max-width:600px; margin:auto; background:white; padding:20px; border-radius:10px; }
-    button { padding:10px 20px; margin-top:10px; }
+    button { padding:10px 20px; margin:5px; }
   </style>
 </head>
 <body>
 
 <div class="box">
   <h1>Quiz4IAS</h1>
-  <p id="timer">Time: 30</p>
-  <p id="progress">Question 1 / 5</p>
+  <p>Select Subject:</p>
 
+  <button onclick="start('history')">Modern History</button>
+  <button onclick="start('polity')">Polity</button>
+
+  <hr>
+
+  <p id="timer"></p>
+  <p id="progress"></p>
   <h3 id="question"></h3>
-
   <div id="options"></div>
-
   <p id="result"></p>
 </div>
 
 <script>
-let questions = [
-  {
-    q: "Who is the Father of Indian Constitution?",
-    options: ["Gandhi", "Ambedkar", "Nehru", "Patel"],
-    ans: 1
-  },
-  {
-    q: "1857 revolt started in?",
-    options: ["Delhi", "Meerut", "Lucknow", "Kanpur"],
-    ans: 1
-  },
-  {
-    q: "INC founded in?",
-    options: ["1885", "1905", "1919", "1947"],
-    ans: 0
-  },
-  {
-    q: "Jallianwala Bagh massacre year?",
-    options: ["1917", "1918", "1919", "1920"],
-    ans: 2
-  },
-  {
-    q: "Quit India Movement year?",
-    options: ["1930", "1935", "1940", "1942"],
-    ans: 3
-  }
+let history = [
+ {q:"1857 revolt started in?", options:["Delhi","Meerut","Lucknow","Kanpur"], ans:1},
+ {q:"Jallianwala Bagh year?", options:["1917","1918","1919","1920"], ans:2}
 ];
 
+let polity = [
+ {q:"Constitution adopted?", options:["1947","1949","1950","1952"], ans:1},
+ {q:"Fundamental Rights part?", options:["III","IV","V","VI"], ans:0}
+];
+
+let questions = [];
 let i = 0;
 let score = 0;
-let time = 30;
+let time = 60;
+let timer;
 
-function loadQ() {
+function start(sub){
+  if(sub=='history') questions = history;
+  if(sub=='polity') questions = polity;
+
+  i = 0;
+  score = 0;
+  time = 60;
+  clearInterval(timer);
+  loadQ();
+  timer = setInterval(runTimer,1000);
+}
+
+function loadQ(){
   if(i >= questions.length){
     document.querySelector(".box").innerHTML =
       `<h2>Finished!</h2><p>Score: ${score}/${questions.length}</p>`;
@@ -66,37 +66,28 @@ function loadQ() {
   document.getElementById("progress").innerText =
     `Question ${i+1} / ${questions.length}`;
 
-  let optHTML = "";
-  questions[i].options.forEach((o, idx)=>{
-    optHTML += `<button onclick="check(${idx})">${o}</button><br>`;
+  let html = "";
+  questions[i].options.forEach((o,idx)=>{
+    html += `<button onclick="check(${idx})">${o}</button><br>`;
   });
-  document.getElementById("options").innerHTML = optHTML;
+  document.getElementById("options").innerHTML = html;
 }
 
-function check(ans){
-  if(ans == questions[i].ans){
-    score++;
-    document.getElementById("result").innerText = "Correct!";
-  } else {
-    document.getElementById("result").innerText = "Wrong!";
-  }
+function check(a){
+  if(a == questions[i].ans) score++;
   i++;
-  setTimeout(()=>{
-    document.getElementById("result").innerText = "";
-    loadQ();
-  }, 800);
+  loadQ();
 }
 
-setInterval(()=>{
+function runTimer(){
   time--;
   document.getElementById("timer").innerText = "Time: " + time;
   if(time <= 0){
+    clearInterval(timer);
     document.querySelector(".box").innerHTML =
       `<h2>Time Over!</h2><p>Score: ${score}/${questions.length}</p>`;
   }
-},1000);
-
-loadQ();
+}
 </script>
 
 </body>
