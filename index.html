@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
-  <title>Quiz4IAS</title>
+  <title>Quiz4IAS - Modern History</title>
   <style>
     body {
       font-family: Arial;
@@ -11,7 +11,7 @@
     }
     .box {
       background: white;
-      max-width: 500px;
+      max-width: 600px;
       margin: auto;
       padding: 30px;
       border-radius: 10px;
@@ -19,10 +19,8 @@
     }
     button {
       padding: 10px 20px;
-      background: #2b7cff;
-      color: white;
-      border: none;
-      border-radius: 5px;
+      margin: 10px;
+      font-size: 16px;
       cursor: pointer;
     }
   </style>
@@ -30,16 +28,75 @@
 <body>
 
 <div class="box">
-  <h1>Quiz4IAS</h1>
-  <p>Your daily dose of IAS practice</p>
-
-  <h3>Sample Question</h3>
-  <p>Who is known as the Father of Indian Constitution?</p>
-
-  <button onclick="alert('Correct Answer: Dr. B. R. Ambedkar')">
-    Show Answer
-  </button>
+  <h1>Modern History Quiz</h1>
+  <h3 id="question"></h3>
+  <div id="options"></div>
+  <p id="score">Score: 0</p>
+  <button onclick="nextQuestion()">Next</button>
 </div>
+
+<script>
+let questions = [
+  {
+    q: "Who founded the Indian National Congress?",
+    options: ["A.O. Hume", "Dadabhai Naoroji", "Tilak", "Gandhi"],
+    answer: 0
+  },
+  {
+    q: "In which year was the Revolt of 1857?",
+    options: ["1856", "1857", "1858", "1860"],
+    answer: 1
+  },
+  {
+    q: "Who started the Home Rule Movement?",
+    options: ["Gandhi", "Tilak & Annie Besant", "Nehru", "Subhash Bose"],
+    answer: 1
+  },
+  {
+    q: "Who gave the slogan 'Swaraj is my birthright'?",
+    options: ["Gandhi", "Tilak", "Bhagat Singh", "Lala Lajpat Rai"],
+    answer: 1
+  },
+  {
+    q: "In which year did Jallianwala Bagh massacre happen?",
+    options: ["1917", "1918", "1919", "1920"],
+    answer: 2
+  }
+];
+
+let current = 0;
+let score = 0;
+
+function loadQuestion() {
+  document.getElementById("question").innerText = questions[current].q;
+  let html = "";
+  questions[current].options.forEach((opt, i) => {
+    html += `<button onclick="check(${i})">${opt}</button><br>`;
+  });
+  document.getElementById("options").innerHTML = html;
+}
+
+function check(i) {
+  if (i === questions[current].answer) {
+    score++;
+    alert("Correct!");
+  } else {
+    alert("Wrong!");
+  }
+  document.getElementById("score").innerText = "Score: " + score;
+}
+
+function nextQuestion() {
+  current++;
+  if (current < questions.length) {
+    loadQuestion();
+  } else {
+    alert("Quiz Finished! Final Score: " + score + "/" + questions.length);
+  }
+}
+
+loadQuestion();
+</script>
 
 </body>
 </html>
