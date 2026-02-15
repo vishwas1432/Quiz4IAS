@@ -2,14 +2,101 @@
 <html>
 <head>
   <title>Quiz4IAS</title>
+  <style>
+    body { font-family: Arial; background:#f4f4f4; padding:20px; }
+    .box { max-width:600px; margin:auto; background:white; padding:20px; border-radius:10px; }
+    button { padding:10px 20px; margin-top:10px; }
+  </style>
 </head>
 <body>
 
-<h1>Quiz4IAS Test</h1>
-<p id="msg">Page loaded</p>
+<div class="box">
+  <h1>Quiz4IAS</h1>
+  <p id="timer">Time: 30</p>
+  <p id="progress">Question 1 / 5</p>
+
+  <h3 id="question"></h3>
+
+  <div id="options"></div>
+
+  <p id="result"></p>
+</div>
 
 <script>
-document.getElementById("msg").innerText = "JavaScript working!";
+let questions = [
+  {
+    q: "Who is the Father of Indian Constitution?",
+    options: ["Gandhi", "Ambedkar", "Nehru", "Patel"],
+    ans: 1
+  },
+  {
+    q: "1857 revolt started in?",
+    options: ["Delhi", "Meerut", "Lucknow", "Kanpur"],
+    ans: 1
+  },
+  {
+    q: "INC founded in?",
+    options: ["1885", "1905", "1919", "1947"],
+    ans: 0
+  },
+  {
+    q: "Jallianwala Bagh massacre year?",
+    options: ["1917", "1918", "1919", "1920"],
+    ans: 2
+  },
+  {
+    q: "Quit India Movement year?",
+    options: ["1930", "1935", "1940", "1942"],
+    ans: 3
+  }
+];
+
+let i = 0;
+let score = 0;
+let time = 30;
+
+function loadQ() {
+  if(i >= questions.length){
+    document.querySelector(".box").innerHTML =
+      `<h2>Finished!</h2><p>Score: ${score}/${questions.length}</p>`;
+    return;
+  }
+
+  document.getElementById("question").innerText = questions[i].q;
+  document.getElementById("progress").innerText =
+    `Question ${i+1} / ${questions.length}`;
+
+  let optHTML = "";
+  questions[i].options.forEach((o, idx)=>{
+    optHTML += `<button onclick="check(${idx})">${o}</button><br>`;
+  });
+  document.getElementById("options").innerHTML = optHTML;
+}
+
+function check(ans){
+  if(ans == questions[i].ans){
+    score++;
+    document.getElementById("result").innerText = "Correct!";
+  } else {
+    document.getElementById("result").innerText = "Wrong!";
+  }
+  i++;
+  setTimeout(()=>{
+    document.getElementById("result").innerText = "";
+    loadQ();
+  }, 800);
+}
+
+setInterval(()=>{
+  time--;
+  document.getElementById("timer").innerText = "Time: " + time;
+  if(time <= 0){
+    document.querySelector(".box").innerHTML =
+      `<h2>Time Over!</h2><p>Score: ${score}/${questions.length}</p>`;
+  }
+},1000);
+
+loadQ();
 </script>
 
 </body>
