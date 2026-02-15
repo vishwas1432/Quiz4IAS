@@ -1,52 +1,4 @@
- <!DOCTYPE html>
-<html>
-<head>
-  <title>Quiz4IAS - Modern History</title>
-  <style>
-    body {
-      font-family: Arial;
-      background: #f4f6f8;
-      text-align: center;
-      padding: 40px;
-    }
-    .box {
-      background: white;
-      max-width: 600px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    button {
-      padding: 10px 20px;
-      margin: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      width: 80%;
-    }
-    #timer {
-      font-size: 20px;
-      color: red;
-      margin-bottom: 10px;
-    }
-    #progress {
-      font-size: 14px;
-      color: #555;
-    }
-  </style>
-</head>
-<body>
-
-<div class="box">
-  <h1>Modern History Quiz</h1>
-  <div id="progress"></div>
-  <div id="timer"></div>
-  <h3 id="question"></h3>
-  <div id="options"></div>
-  <p id="score">Score: 0</p>
-</div>
-
-<script>
+ <script>
 let questions = [
   { q: "Who founded the Indian National Congress?", options: ["A.O. Hume","Tilak","Gandhi","Naoroji"], answer: 0 },
   { q: "Revolt of 1857 started from?", options: ["Delhi","Meerut","Kanpur","Lucknow"], answer: 1 },
@@ -54,12 +6,4 @@ let questions = [
   { q: "Jallianwala Bagh happened in?", options: ["1917","1918","1919","1920"], answer: 2 },
   { q: "Swaraj is my birthright slogan by?", options: ["Gandhi","Tilak","Bhagat Singh","Lala Lajpat Rai"], answer: 1 }
 ];
-
-let current = 0;
-let score = 0;
-let time = 30;
-let timerInterval;
-
-function loadQuestion() {
-  time = 30;
-  documen
+</script>
