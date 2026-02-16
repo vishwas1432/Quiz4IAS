@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
 <head>
   <title>Quiz4IAS</title>
@@ -86,6 +87,88 @@ function runTimer(){
     clearInterval(timer);
     document.querySelector(".box").innerHTML =
       `<h2>Time Over!</h2><p>Score: ${score}/${questions.length}</p>`;
+let history = [
+ {q:"The year of foundation of Women's Indian Association?", 
+  options:["1947","1937","1927","1917"], ans:3},
+
+ {q:"Government of India Act 1858 transferred power to?", 
+  options:["Company","Crown","Board of Directors","Governor General"], ans:1},
+
+ {q:"Founder of Ghadar Party?", 
+  options:["Bhikaji Cama","Lala Har Dayal","Shyamji Verma","Both A & B"], ans:1},
+
+ {q:"Poona Pact was between?", 
+  options:["Nehru-Ambedkar","Gandhi-Ambedkar","Malaviya-Ambedkar","Gandhi-Nehru"], ans:1},
+
+ {q:"Who did not defend INA soldiers?", 
+  options:["Sapru","Bhulabhai Desai","Rajagopalachari","Nehru"], ans:2},
+
+ {q:"Treaty that ended Peshwa Baji Rao II?", 
+  options:["Purandar","Wadgaon","Bassein","Salbai"], ans:2},
+
+ {q:"First English newspaper in India?", 
+  options:["Tilak","Raja Rammohan Roy","J A Hickey","Bentinck"], ans:2},
+
+ {q:"First woman Chief Minister?", 
+  options:["Nandini Satpathy","Jayalalitha","Sucheta Kripalani","Mayawati"], ans:2},
+
+ {q:"Author of Vande Mataram?", 
+  options:["Gandhi","Tagore","Bankim Chandra","Sarat Chandra"], ans:2},
+
+ {q:"Father of Modern India?", 
+  options:["Raja Ram Mohan Roy","Dayanand","Aurobindo","Bhagat Singh"], ans:0},
+
+ {q:"Most important feature of GOI Act 1919?", 
+  options:["Councils","Direct election","Dyarchy","All"], ans:3},
+
+ {q:"Muslim communalism promoted by?", 
+  options:["Ashfaqullah","Liaqat","Azad","Sayyid Ahmad Khan"], ans:3},
+
+ {q:"Who threw bombs in Central Assembly 1929?", 
+  options:["Bhagat Singh","Batukeshwar Dutt","Rajguru","Bhagat & Dutt"], ans:3},
+
+ {q:"Noakhali is in?", 
+  options:["West Bengal","Bangladesh","Tripura","Bihar"], ans:1},
+
+ {q:"French Governor during First Carnatic War?", 
+  options:["La Bourdonnais","Paradise","Dupleix","Lally"], ans:2},
+
+ {q:"1857 revolt did not include?", 
+  options:["New education","Widow remarriage","Sepoys to Afghanistan","Intermarriage laws"], ans:3},
+
+ {q:"Cornwallis revenue: which correct?", 
+  options:["1 only","2 only","Both","Neither"], ans:1},
+
+ {q:"Governor General of India by which Act?", 
+  options:["Regulating Act","Pitt's Act","Charter 1793","Charter 1833"], ans:3},
+
+ {q:"Rea, Longhurst, Burgess were?", 
+  options:["Archaeologists","Press founders","Church builders","Railway engineers"], ans:0},
+
+ {q:"7 August National Handloom Day because?", 
+  options:["Swadeshi 1905","Gandhi birth","Quit India","INA trial"], ans:0},
+
+ {q:"Raja Ram Mohan Roy statements?", 
+  options:["I only","II only","Both","Neither"], ans:2},
+
+ {q:"Non-Cooperation Programme parts?", 
+  options:["1","2","3","4"], ans:2},
+
+ {q:"Non-Cooperation Movement features?", 
+  options:["I only","II only","Both","Neither"], ans:2},
+
+ {q:"'Sedition has become my religion' said at?", 
+  options:["Champaran","Dandi","Round Table","Quit India"], ans:1},
+
+ {q:"Legal defence after Chauri Chaura?", 
+  options:["CR Das","Malaviya & Krishna Kant","Kitchlew","Jinnah"], ans:1},
+
+ {q:"Harijan upliftment started after?", 
+  options:["Poona Pact","Delhi Pact","Quit India","GOI 1935"], ans:0},
+
+ {q:"Founder of Self-Respect Movement?", 
+  options:["Periyar","Ambedkar","Jadhav","Javalkar"], ans:0}
+];
   }
 }
 </script>
